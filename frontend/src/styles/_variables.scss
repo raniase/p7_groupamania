@@ -1,0 +1,33 @@
+// Couleurs
+$dark-grey: rgb(158, 158, 158);
+
+$clear-color: #fff;
+$base-color: rgb(235, 235, 235);
+$police-color: rgb(82, 82, 82);
+
+$primary-color: rgb(196, 58, 72);
+$secondary-color: rgb(10, 23, 52);
+
+$success-color: rgb(66, 172, 106);
+$warning-color: rgb(196, 58, 72);
+
+// Margin - Padding
+$base-padding: 1.5rem;
+$centered-margin: 0 auto;
+$marged-centered-margin: 2rem auto;
+
+// Raduis
+$small-radius: 0.3rem;
+$medium-radius: 1.5rem;
+$round-radius: 50%;
+
+// Box shadow
+$shadow: 0 0.3rem 1.5rem rgba(0,0,0,0.2);
+
+// Responsive break points
+$break-mini: 375px;
+$break-small: 425px;
+$break-tablet: 768px;
+$break-medium: 1024px;
+$break-large: 1210px;
+$break-header: 1500px;

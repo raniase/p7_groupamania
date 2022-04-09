@@ -1,0 +1,172 @@
+.container {
+  max-width: 110rem;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 4rem;
+  padding-left: 4rem;
+  
+  @media screen and (max-width: $break-tablet) {
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+
+  @media screen and (max-width: $break-small) {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+}
+
+.form {
+    max-width: 75rem;
+    width: 60%;
+    position: relative;
+    margin: $centered-margin;
+    padding: 3rem 5rem;
+
+    background-color: $clear-color;
+    color: $police-color;
+
+    box-shadow: $shadow;
+    border-radius: $small-radius;
+
+    text-align: center;
+
+    @media screen and (max-width: $break-tablet + 100) {
+      width: 85%
+    }
+
+    @media screen and (max-width: $break-small) {
+      width: 90%;
+      padding: 5rem 2rem;
+    }
+
+    &__title {
+      margin: 0;
+      text-align: center;
+    }
+  
+    &__group {
+      position: relative;
+      margin: 1rem 0 2rem 0;
+      padding: 1.5rem 0 0;
+    }
+  
+    &__label {
+      width: 100%;
+      display: block;
+      position: absolute;
+      top: 0;
+      background-color: $clear-color;
+      text-align: left;
+      transition: 0.2s;
+    }
+  
+    &__field {
+      width: 100%;
+      padding: 1rem 0;
+
+      background: transparent;
+      color: $police-color;
+
+      border: 0;
+      border-bottom: 0.2rem solid $police-color;
+      outline: 0;
+
+      font-size: 1.8rem;
+      font-family: inherit;
+
+      transition: border-color 0.2s;
+  
+      &::placeholder {
+        color: transparent;
+      }
+  
+      &:placeholder-shown ~ .form__label {
+        top: 2rem;
+        cursor: text;
+      }
+  
+      &:required,
+      &:invalid { 
+        box-shadow:none;
+      }
+      
+      &:focus {
+        padding-bottom: 1rem;  
+        border-image: linear-gradient(to right, $success-color,$base-color);
+        border-image-slice: 1;
+
+        ~ .form__label {
+          display: block;
+          position: absolute;
+          top: 0;
+          color: $success-color;
+          transition: 0.2s;
+        }
+      }
+    }
+  }
+
+.options {
+
+  &__dots {
+    width: 3.5rem;
+    height: 3.5rem;
+    @include flexbox(center, row, center);
+    margin: 0 1.5rem;
+
+    color: inherit;
+    border-radius: $round-radius;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: $shadow;
+    }
+
+    &--active {
+      box-shadow: $shadow;
+    }
+  }
+
+  &__dropdown {
+    @include flexbox(flex-start, column, flex-start);
+    position: absolute;
+    top: 7rem;
+    right: 0;
+    padding: $base-padding;
+
+    background-color: $clear-color;
+
+    box-shadow: $shadow;
+    border-radius: $small-radius;
+    border-radius: $small-radius;
+
+    z-index: 1;
+  }
+
+  &__comment { 
+    @media screen and (max-width: $break-small) {
+      top: 4rem;
+      left: 0;
+      right: auto;
+    }
+
+  }
+}
+
+.popupform {
+  width: 100%;
+  height: 100%;
+  @include flexbox(center, column, center);
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  background-color: rgb(10, 23, 52, 0.6);
+  z-index: 2;
+
+  &__form {
+    background-color: $clear-color;
+  }
+}
