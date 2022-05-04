@@ -139,7 +139,7 @@ export default {
   }
 
   &--generic {
-    background-color: lighten($color: $secondary-color, $amount: 20);
+    background-color: lighten($color:#1a3d8a, $amount: 20);
   }
 
   &--bigGreen {

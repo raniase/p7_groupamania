@@ -67,7 +67,9 @@ export default {
     margin: $marged-centered-margin;
     padding: $base-padding;
 
-    background-color: $base-color;
+  
+   background-color: #cab0f952;
+
     color: $police-color;
 
     border: none;

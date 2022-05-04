@@ -88,7 +88,7 @@ const router = new VueRouter({
 //    1. Vérifier l'ancienneté du token :
 //          * si le token a plus de 24h : suppression du token et retour à la page Landing (utilisateur déconnecté)
 //          * si le token a moins de 24h : Poursuite de la tentative d'accès à la page
-//    2. Utilisation du token pour faire une requête d'authentification "me"
+//    2. Utilisation du token pour faire une requête d'authentification "currentUser"
 //          * si la réponse est régative (token obsolète), accès refusé, retour à la page Landing
 //          * si la réponse est positive, accès à la page recherchée
 
@@ -130,7 +130,7 @@ router.beforeEach((to, from, next) => {
         },
       };
       axios
-        .post(process.env.VUE_APP_LOCALHOST_URL + "users/me", options)
+        .post(process.env.VUE_APP_LOCALHOST_URL + "users/currentUser", options)
         .then((response) => {
           if (!response.data) {
             if (requiresAuth) {

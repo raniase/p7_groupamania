@@ -13,8 +13,11 @@ export default { name: "TheFooter" };
 <style scoped lang="scss">
 .footer {
   width: 100%;
+  background-image: url('https://cdn.wallpapersafari.com/17/89/1j7RkU.jpg');
+background-repeat:repeat-x;
+
   @include flexbox(center, row, center);
-  background-color: $primary-color;
+  
 
   &__logo {
     width: 15%;

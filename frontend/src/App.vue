@@ -44,9 +44,14 @@ export default {
   -moz-osx-font-smoothing: grayscale;
 
   &__topcontent {
+
     min-width: 100%;
     min-height: 100%;
+ 
+    
     @include flexbox(center, column, center);
+   
+
   }
 
   &__router {

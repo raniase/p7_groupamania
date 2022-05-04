@@ -303,6 +303,7 @@ export default {
 <style scope lang="scss">
 .userinfos {
   @include flexbox(space-between, row, flex-start);
+     background-color: #cab0f952;
   position: relative;
   margin: $marged-centered-margin;
   padding: 3rem;

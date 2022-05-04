@@ -55,6 +55,7 @@ export default {
     },
 
     wasPublished() {
+      console.log("this.post: ", this.post)
       const creationDate = new Date(this.post.createdAt);
       const now = new Date();
       const timeSinceCreation =
@@ -206,7 +207,7 @@ export default {
         <img v-if="post.imageUrl" :src="post.imageUrl" :alt="post.title" />
       </div>
     </div>
-
+   <div class="post_reactions">
     <div class="post__likes">
       <BaseLike
         :item="post"
@@ -215,8 +216,9 @@ export default {
         setMutation="setPostLikes"
       />
     </div>
-
     <SectionComments :post="post" />
+   </div>
+
 
     <!-- Formulaire popup pour modifier son post -->
     <div v-show="editing" class="popupform" @click="offClick">
@@ -318,7 +320,14 @@ export default {
   }
 
   &__likes {
-    padding: 1rem 0 0 1.5rem;
+    padding: 15px 0 0 0;
   }
+
+  &_reactions {
+    display: flex;
+    padding-left: 15px;
+  }
+
+
 }
 </style>

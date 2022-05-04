@@ -49,7 +49,7 @@ const actions = {
 
   async getUserInfos({ commit, state }, token) {
     const response = await axios.post(
-      process.env.VUE_APP_LOCALHOST_URL + "users/me",
+      process.env.VUE_APP_LOCALHOST_URL + "users/currentUser",
       {
         method: "POST",
         data: JSON.stringify(token),

@@ -97,7 +97,8 @@ export default {
 <style scoped lang="scss">
 .header {
   width: 100%;
-  background-color: $primary-color;
+background-image: url('https://cdn.wallpapersafari.com/17/89/1j7RkU.jpg');
+background-repeat:repeat-x;
   color: $clear-color;
 
   &__content {

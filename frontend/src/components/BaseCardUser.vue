@@ -29,6 +29,7 @@ export default {
 
 <style scope lang="scss">
 .user {
+
   width: 20rem;
   @include flexbox(center, column, center);
   display: block;
