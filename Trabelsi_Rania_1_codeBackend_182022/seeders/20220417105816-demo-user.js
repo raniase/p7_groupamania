@@ -12,7 +12,7 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
      */
-    const fakePassHash = bcrypt.hashSync("f", 10);
+    const fakePassHash = bcrypt.hashSync("DemoAdmin1", 10);
     await queryInterface.bulkInsert(
       "Users",
       [
