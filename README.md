@@ -8,5 +8,5 @@ Le projet est entièrement hosté en local.
 
 Commencez par cloner le projet :
 ```
-git clone 
+git clone git@github.com:raniase/p7_groupamania.git
 ```
