@@ -54,7 +54,7 @@ exports.getCommentsFromPost = (req, res, next) => {
           model: models.User,
           attributes: ["imageUrl", "username", "lastname", "firstname"],
         },
-      ],
+      ], 
       order: [["createdAt", "ASC"]],
     })
       .then((comments) => {

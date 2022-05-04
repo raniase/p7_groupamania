@@ -11,7 +11,7 @@ router.post("/signup", userController.signup);
 router.post("/login", userController.login);
 
 // Route d'authentification
-router.post("/me", userController.me);
+router.post("/currentUser", userController.currentUser);
 
 // Récupérer tous les utilisateurs
 router.get("/", auth, userController.getAllUsers);

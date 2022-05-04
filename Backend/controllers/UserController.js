@@ -47,9 +47,9 @@ exports.signup = (req, res, next) => {
         isAdmin: 0,
       })
         .then((user) => {
-            res.status(200).json({ token: jwt.generateToken(user.dataValues) });
+            res.status(201).json({ token: jwt.generateToken(user.dataValues) });
         })
-        .catch((error) => res.status(404).json(error));
+        .catch((error) => res.status(500).json(error));
     });
   }
 };
@@ -73,20 +73,22 @@ exports.login = (req, res, next) => {
           user.password,
           (errComparePassword, resComparePassword) => {
             if (resComparePassword) {
-              res.status(200).json({ token: jwt.generateToken(user) });
+              res.status(201).json({ token: jwt.generateToken(user) });
             } else {
               res
-                .status(403)
+                .status(401)
                 .json({ message: "Le mot de passe est invalide." });
             }
           }
         );
       })
-      .catch((error) => res.status(404).json(error));
+      .catch((error) => res.status(500).json(error));
   }
 };
 
-exports.me = (req, res, next) => {
+
+
+exports.currentUser = (req, res, next) => {
   const data = JSON.parse(req.body.data);
 
   if (!data || !regex.test(data)) {
@@ -242,7 +244,7 @@ exports.deleteProfilPicture = (req, res, next) => {
             .then(() => {
               models.User.findOne({ where: { id: userId } })
                 .then((user) => res.status(200).json(user))
-                .catch((error) => res.status(404).json(error));
+                .catch((error) => res.status(400).json(error));
             })
             .catch((error) => res.status(501).json(error));
         } else {
@@ -292,13 +294,13 @@ exports.updatePassword = (req, res, next) => {
                     .then(() => {
                       models.User.findOne({ where: { id: userId } })
                         .then((user) => res.status(200).json(user))
-                        .catch((error) => res.status(404).json(error));
+                        .catch((error) => res.status(400).json(error));
                     })
-                    .catch((error) => res.status(501).json(error));
+                    .catch((error) => res.status(500).json(error));
                 });
               } else {
                 res
-                  .status(403)
+                  .status(401)
                   .json({ message: "Le mot de passe est invalide." });
               }
             }

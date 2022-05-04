@@ -10,8 +10,9 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
+      //OneToMany: Un post peut avoir plusieurs commentaires
       models.Post.hasMany(models.Comment, { onDelete: "CASCADE", hooks: true });
-
+      //ManyToOne: Chaque post appartient à un seul utilisateur
       models.Post.belongsTo(models.User, {
         foreignKey: {
           allowNull: false,

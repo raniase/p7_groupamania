@@ -8,7 +8,9 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
+      /*chaque utulisateur peut avoir plusieur post*/
       models.User.hasMany(models.Post, { onDelete: "CASCADE", hooks: true });
+       /*chaque utulisateur peut avoir plusieur comment*/
       models.User.hasMany(models.Comment, { onDelete: "CASCADE", hooks: true });
     }
   }

@@ -41,14 +41,14 @@ exports.addPost = (req, res) => {
 };
 
 exports.getAllPosts = (req, res) => {
-  console.log('getAllPost')
   models.Post.findAll({
     include: [
       {
         model: models.User,
         attributes: ["imageUrl", "username", "lastname", "firstname"],
       },
-    ]
+    ], 
+    order: [["createdAt", "DESC"]],
   })
     .then((posts) => {
       if (posts.length > 0) {
@@ -175,19 +175,21 @@ exports.deletePost = (req, res) => {
 };
 
 exports.like = (req, res, next) => {
-  const data = JSON.parse(req.body.data);
+
+  const data = JSON.parse(req.body.data); //2
 
   if (!data || !req.headers.authorization || !regex.test(data)) {
     res.status(400).json({ message: "Requête erronée." });
   } else {
     const token = jwt.getUserId(req.headers.authorization);
     const userId = token.userId;
-
-    models.PostLikes.findOne({ where: { UserId: userId, PostId: data } })
+    console.log('userID ', userId);
+    console.log('token ', token);
+    models.Postlikes.findOne({ where: { UserId: userId, PostId: data } })
       .then((like) => {
         if (like) {
           if (userId === like.userId) {
-            models.PostLikes.destroy({ where: { id: like.id } })
+            models.Postlikes.destroy({ where: { id: like.id } })
               .then(() => {
                 res.status(204).json({ message: "Elément supprimé." });
               })
@@ -196,9 +198,9 @@ exports.like = (req, res, next) => {
             res.status(403).json({ message: "Action non autorisée." });
           }
         } else {
-          models.PostLikes.create({ UserId: userId, PostId: data })
+          models.Postlikes.create({ UserId: userId, PostId: data })
             .then(() => {
-              models.PostLikes.findOne({
+              models.Postlikes.findOne({
                 where: { UserId: userId, PostId: data },
                 include: [
                   {
@@ -226,7 +228,7 @@ exports.getLikesFromPost = (req, res, next) => {
   if (!req.params.id) {
     res.status(400).json({ message: "Requête erronée." });
   } else {
-    models.PostLikes.findAll({
+    models.Postlikes.findAll({
       where: { postId: req.params.id },
       include: [
         {
@@ -234,7 +236,7 @@ exports.getLikesFromPost = (req, res, next) => {
           attributes: ["imageUrl", "username", "lastname", "firstname"],
         },
       ],
-      order: [["createdAt", "ASC"]],
+      order: [["createdAt", "DESC"]],
     })
       .then((likes) => {
         if (likes.length > 0) {
@@ -243,6 +245,9 @@ exports.getLikesFromPost = (req, res, next) => {
           res.status(200).json({ message: "Aucun élément à afficher." });
         }
       })
-      .catch((error) => res.status(500).json(error));
+      .catch((error) => {
+        console.log(error),
+        res.status(500).json(error)
+      });
   }
 };

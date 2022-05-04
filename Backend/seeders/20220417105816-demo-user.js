@@ -3,7 +3,6 @@ const bcrypt = require("bcrypt");
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    const fakePassHash = bcrypt.hashSync("DemoAdmin1", 10);
     /**
      * Add seed commands here.
      *
@@ -13,7 +12,7 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
      */
-
+    const fakePassHash = bcrypt.hashSync("f", 10);
     await queryInterface.bulkInsert(
       "Users",
       [
@@ -27,6 +26,8 @@ module.exports = {
           username: "JohnDoe",
           bio: "Some bio of John Doe, Some bio Some bioSome bioSome bio",
           imageUrl: "http://localhost:3000/images/test_img.jpg",
+          createdAt: new Date(),
+          updatedAt: new Date(),
         },
         {
           id: 2,
@@ -38,6 +39,8 @@ module.exports = {
           username: "Fou Bar",
           bio: "Born in 1993.....",
           imageUrl: "http://localhost:3000/images/test_img.jpg",
+          createdAt: new Date(),
+          updatedAt: new Date(),
         },
       ],
       {}
@@ -51,6 +54,5 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete("Users", null, {});
   },
 };
