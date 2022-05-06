@@ -4,7 +4,7 @@ Le projet consiste à construire un réseau social interne pour les employés de
 
 Le projet est entièrement hosté en local.
 
-## Lancer le projet 
+## Lancer le projet.
 
 Commencez par cloner le projet :
 ```
